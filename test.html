@@ -13,8 +13,11 @@
       <button id="btn" type="submit">검색</button>
     </div>
     <div class="container">
-        <div class="thumbnail"></div>
-        <p></p>
+      <ul>
+        <li class="thumbnail"></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
     <script>
       let search = '';
@@ -34,8 +37,10 @@
         })
         .done(function (data) {
           // for (let i = 0; i < data.length; i++) {
-          $("p").append(data.documents[0].title);
+          $("li")[1].append(data.documents[0].title);
+          $("li")[2].append(data.documents[0].contents);
           $(".thumbnail").append('<img src="' + data.documents[0].thumbnail + '"/>');
+          $(".thumbnail").children().css('width', "300px");
           console.log(data);
           // }
         });
